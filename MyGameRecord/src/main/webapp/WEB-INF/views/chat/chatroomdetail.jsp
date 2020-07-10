@@ -11,13 +11,13 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.min.js"></script>
 </head>
 <body>
-<h1>${loginUser.name }님 ${ch.chatroom_no }방에 오신것을 환엽니다!</h1>
+<h1>${loginUser.name }님 ${cr.chatroom_no }방에 오신것을 환엽니다!</h1>
 	
 	<div>
 	<input type="text" id="message" />
 	<input type="button" id="sendBtn" value="전송"/>
 	<div id="chatdata">
-		<input type="hidden" value="${loginUser.name }" id="userid">
+		<input type="hidden" value="${loginUser.id }" id="userid">
 		<input type="hidden" value="${cr.chatroom_no }" id="chatroom_no">
 	</div>
 	</div>
@@ -54,16 +54,26 @@
 		var data = evt.data;
 		var sessionid = null;
 		var message = null;
+		var chatroom = null;
 		
-		 var strArray = data.split('|'); 
-		 //여기보다가 end
-		 for(var i=0; i<strArray.length; i++){
-				console.log('str['+i+']:' + strArray[i]);
-			}
-		 
-		if(data.chatroom_no == $("#chatroom_no").val()){
+		//여기보다가 end
+		var strArray = data.split("|");
 		
-			if(data.user_id == $("userid").val()){
+		for(var i=0; i<strArray.length;i++){
+			console.log("str["+i+"]" + strArray[i]);
+		}
+		var currentuser_session = $("#userid").val();
+		var currentchatroom = $("#chatroom_no").val();
+		console.log("current_session_id : " + currentuser_session);
+		
+		//1. 채팅방번호  2.세션아이디 3.메세지내용
+		chatroom = strArray[0];
+		sessionid = strArray[1];
+		message = strArray[2];
+		console.log("chatroom :" + chatroom);
+		console.log("currentchatroom" + currentchatroom);
+		if(chatroom == currentchatroom){
+			if(sessionid == currentuser_session){
 				var printHTML = "<div>";
 				printHTML += "<div>";
 				printHTML += "<strong>["+sessionid +"] -> "+message+"</strong>";
@@ -83,7 +93,7 @@
 			}
 		
 		}else{
-		
+			console.log("오류 ");
 		}
 		
 	}

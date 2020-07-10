@@ -38,28 +38,31 @@ public class echoRoomHandler extends TextWebSocketHandler{
 			   map.put("chatroom_no", mapReceive.get("chatroom_no"));
 			   map.put("session", session);
 			   System.out.println("한번더 더더더 확인" + session.getAttributes().get("userId"));
-			   sessionList.add(map);
+			   sessionList.add(map);//이쪽부분때문에 메세지를 전송할떄마다 저장을해서 문제가 생긴다 이것을 고쳐주자1) override 클라이언트 연결될떄를 받아서 나눠주는법 2)if 로 예외처리하기
 			   
 			   
 			   for(int i=0; i<sessionList.size(); i++) {
 					Map<String, Object> mapSessionList = sessionList.get(i);
 					
+					//sessionList에 담긴 Map에 값 가져옴 
 					String chatroom_no = (String)mapSessionList.get("chatroom_no");
 					WebSocketSession sess = (WebSocketSession)mapSessionList.get("session");
-					System.out.println("확인 마지막" + sess);
-					
+
+					//만약 Map값을 불러왔는데 방번호가 같다면?
 					if(chatroom_no.equals(mapReceive.get("chatroom_no"))) {
-						Map<String, String> mapToSend = new HashMap<String, String>();
-						mapToSend.put("chatroom_no", chatroom_no);
-						mapToSend.put("msg", session.getId() + " | " + mapReceive.get("msg"));
-					
-						System.out.println("확인" + mapToSend.get("chatroom_no"));
-						System.out.println("확인" + mapToSend.get("msg"));
+//						Map<String, String> mapToSend = new HashMap<String, String>();
+//						mapToSend.put("chatroom_no", chatroom_no);
+//						mapToSend.put("msg", session.getId() + "" + mapReceive.get("msg"));
+//					
+//						System.out.println("확인" + mapToSend.get("chatroom_no"));
+//						System.out.println("확인" + mapToSend.get("msg"));
 						
+//						//이쪽부분에서 session교체를 해주면 되지않을까? http와 socket 
+						String jsonStr2 = chatroom_no + "|" +session.getId()+ "|" + mapReceive.get("msg");
 						
-						String jsonStr = objectMapper.writeValueAsString(mapToSend);
-						System.out.println("확인 에욱" + jsonStr);
-						sess.sendMessage(new TextMessage(jsonStr));
+//						String jsonStr = objectMapper.writeValueAsString(mapToSend);
+						System.out.println("확인 에욱" + jsonStr2);
+						sess.sendMessage(new TextMessage(jsonStr2));
 					}
 			   }
 			   

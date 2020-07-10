@@ -20,5 +20,10 @@
   		FROM CHATROOM
   		WHERE CR_NAME = #{chatroomname}
   </select>
+  
+  <select id="selectList" resultMap="ChatRoomResultSet">
+  		SELECT *
+  		FROM CHATROOM
+  </select>
 
 </mapper>

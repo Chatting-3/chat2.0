@@ -1,5 +1,7 @@
 package com.record.MyGameRecord.chat.dao;
 
+import java.util.ArrayList;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -20,6 +22,11 @@ public class ChatRoomDao {
 	public chatroom Chatroomselect(String chatroomname) {
 		
 		return sqlSessionTemplate.selectOne("chatMapper.selectChatRoomOne", chatroomname);
+	}
+
+	public ArrayList<chatroom> selectList() {
+		
+		return (ArrayList)sqlSessionTemplate.selectList("chatMapper.selectList");
 	}
 
 }

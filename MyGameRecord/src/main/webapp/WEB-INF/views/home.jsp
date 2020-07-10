@@ -124,7 +124,7 @@
 	
 	 <div>
 		<label>* 채팅방 목록</label><br>
-		<form name='TransTest' id='tForm' method='get' action='chatting.do'>
+		<form name='TransTest' id='tForm' method='get' action='chatlist.do'>
 			<p><button name='subject' type='submit'>채팅방 리스트 보기</button></p>
 		</form>
 	</div>

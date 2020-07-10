@@ -1,5 +1,7 @@
 package com.record.MyGameRecord.chat.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,12 @@ public class ChatRoomServiceImpl implements ChatRoomService{
 	public chatroom Chatroomselect(String chatroomname) {
 		
 		return cDao.Chatroomselect(chatroomname);
+	}
+
+	@Override
+	public ArrayList<chatroom> selectList() {
+	
+		return cDao.selectList();
 	}
 	
 }
