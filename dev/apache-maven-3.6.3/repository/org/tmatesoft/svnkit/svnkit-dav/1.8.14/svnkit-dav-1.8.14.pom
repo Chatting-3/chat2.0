@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.tmatesoft.svnkit</groupId>
+  <artifactId>svnkit-dav</artifactId>
+  <version>1.8.14</version>
+  <packaging>war</packaging>
+  <name>SVNKit based Subversion HTTP server (servlet)</name>
+  <description>SVNKit based Subversion HTTP server (servlet)</description>
+  <url>https://svnkit.com/</url>
+  <organization>
+    <name>TMate Software</name>
+    <url>https://svnkit.com/</url>
+  </organization>
+  <licenses>
+    <license>
+      <name>TMate Open Source License</name>
+      <url>https://svnkit.com/license.html</url>
+      <distribution>repos</distribution>
+      <comments>GPL-like license with a dual-licensing option for closed source usage</comments>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>alexander.kitaev</id>
+      <name>Alexander Kitaev</name>
+      <email>support@svnkit.com</email>
+      <roles>
+        <role>developer</role>
+      </roles>
+    </developer>
+  </developers>
+  <scm>
+    <connection>scm:svn:https://svn.tmatesoft.com/repos/svnkit</connection>
+    <developerConnection>scm:svn:https://svn.tmatesoft.com/repos/svnkit</developerConnection>
+    <url>https://svn.tmatesoft.com/repos/svnkit</url>
+  </scm>
+  <dependencies>
+    <dependency>
+      <groupId>org.tmatesoft.svnkit</groupId>
+      <artifactId>svnkit</artifactId>
+      <version>1.8.14</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <version>2.5</version>
+      <scope>compile</scope>
+    </dependency>
+  </dependencies>
+</project>

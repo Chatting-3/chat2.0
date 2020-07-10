@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="chatMapper">
+
+  <resultMap type="ChatRoom" id="ChatRoomResultSet">
+  		<id property="chatroom_no" column="CR_NO"/>
+  			<result property="chatroomname" column="CR_NAME"/>
+  			<result property="chatpassword" column="CR_PW"/>
+  </resultMap>
+  
+  	<insert id="insertChatRoom" parameterType="ChatRoom">
+  			INSERT INTO CHATROOM VALUES
+  								(SEQ_CID.NEXTVAL
+  								, #{chatroomname}
+  								, #{chatpassword})
+  	</insert>
+  
+  <select id="selectChatRoomOne" parameterType="string" resultMap="ChatRoomResultSet">
+  		SELECT *
+  		FROM CHATROOM
+  		WHERE CR_NAME = #{chatroomname}
+  </select>
+
+</mapper>
