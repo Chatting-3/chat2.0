@@ -95,9 +95,11 @@ public class ChatController {
 		cr.setChatroom_no(roomnumber);
 		System.out.println("방번호 " + cr);
 		mv.addObject("cr", cr).setViewName("chat/chatroomdetail");
-		
 		Member loginUser = (Member)session.getAttribute("loginUser");
-		session.setAttribute("userId", loginUser.getId());
+		
+		loginUser.setChatroom_no(roomnumber);
+		
+		session.setAttribute("chatRoomnumber", loginUser.getChatroom_no());
 		
 		return mv;
 	}

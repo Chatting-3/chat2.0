@@ -21,8 +21,24 @@ public class Member implements Serializable{
 	private Date enrollDate;
 	private Date updateDate;
 	private String mStatus;
-	
+	private String chatroom_no;//채팅방 번호
 	public Member() {
+	}
+
+	public Member(String id, String pwd, String name, String email, String gender, int age, String phone,
+			String address, Date enrollDate, Date updateDate, String mStatus, String chatroom_no) {
+		this.id = id;
+		this.pwd = pwd;
+		this.name = name;
+		this.email = email;
+		this.gender = gender;
+		this.age = age;
+		this.phone = phone;
+		this.address = address;
+		this.enrollDate = enrollDate;
+		this.updateDate = updateDate;
+		this.mStatus = mStatus;
+		this.chatroom_no = chatroom_no;
 	}
 
 	public Member(String id, String pwd, String name, String email, String gender, int age, String phone,
@@ -38,6 +54,14 @@ public class Member implements Serializable{
 		this.enrollDate = enrollDate;
 		this.updateDate = updateDate;
 		this.mStatus = mStatus;
+	}
+
+	public String getChatroom_no() {
+		return chatroom_no;
+	}
+
+	public void setChatroom_no(String chatroom_no) {
+		this.chatroom_no = chatroom_no;
 	}
 
 	public String getId() {
@@ -136,8 +160,10 @@ public class Member implements Serializable{
 	public String toString() {
 		return "Member [id=" + id + ", pwd=" + pwd + ", name=" + name + ", email=" + email + ", gender=" + gender
 				+ ", age=" + age + ", phone=" + phone + ", address=" + address + ", enrollDate=" + enrollDate
-				+ ", updateDate=" + updateDate + ", mStatus=" + mStatus + "]";
+				+ ", updateDate=" + updateDate + ", mStatus=" + mStatus + ", chatroom_no=" + chatroom_no + "]";
 	}
+
+
 	
 	
 	
